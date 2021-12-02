@@ -57,6 +57,8 @@ const getEmails = () => {
 const postMessage = async (message) => {
     let rec_date = new Date(message.date);
     rec_date = rec_date.toLocaleString();
+
+    const text = message.text.length > 80 ? message.text.substr(0, 80)+"..." : message.text;
     const payload = {
         channel: config.slack_channel,
         attachments: [
@@ -67,21 +69,14 @@ const postMessage = async (message) => {
                         type: "section",
                         text: {
                             type: "mrkdwn",
-                            text: `*Nouvel email !*`,
+                            text: `*${message.subject}* - *${message.from?.value[0]?.address}* (${message.from?.value[0]?.name})`,
                         },
                     },
                     {
                         type: "section",
                         text: {
                             type: "mrkdwn",
-                            text: `*Sujet: ${message.subject}*`,
-                        },
-                    },
-                    {
-                        type: "section",
-                        text: {
-                            type: "mrkdwn",
-                            text: message.text,
+                            text: text,
                         },
                     },
                     {
@@ -89,16 +84,7 @@ const postMessage = async (message) => {
                         elements: [
                             {
                                 type: "mrkdwn",
-                                text: `*Expéditeur:* ${message.from.text}`,
-                            },
-                        ],
-                    },
-                    {
-                        type: "context",
-                        elements: [
-                            {
-                                type: "mrkdwn",
-                                text: `*Date:* ${rec_date}`,
+                                text: `${rec_date} - <https://webmail.gandi.net/SOGo/so/contact@paristestconf.com/Mail/view#!/Mail/0/INBOX|Voir l'email>`,
                             },
                         ],
                     },
