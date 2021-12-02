@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "imap": "^0.8.19"
+    "imap": "^0.8.19",
+    "mailparser": "^3.4.0",
+    "node-fetch": "^2.6.6"
   }
 }

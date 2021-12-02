@@ -4,4 +4,6 @@ module.exports = {
     host: "your-email-provider-url",
     port: 993,
     tls: true,
+    slacktoken: "you-slack-token",
+    slackchannel: "your-slack-channel"
 }
