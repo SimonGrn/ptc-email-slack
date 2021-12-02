@@ -59,46 +59,48 @@ const postMessage = async (message) => {
     rec_date = rec_date.toLocaleString();
     const payload = {
         channel: config.slack_channel,
-        blocks: [
+        attachments: [
             {
-                type: "section",
-                text: {
-                    type: "mrkdwn",
-                    text: `*${message.subject}*`,
-                },
-            },
-            {
-                type: "section",
-                text: {
-                    type: "mrkdwn",
-                    text: message.text.length > 300 ? message.text.substr(0, 300)+"..." : message.text,
-                },
-            },
-            {
-                type: "context",
-                elements: [
+                color: "#11a5aa",
+                blocks: [
                     {
-                        type: "image",
-                        image_url: "https://avatars0.githubusercontent.com/u/9919?s=280&v=4",
-                        alt_text: "images",
+                        type: "section",
+                        text: {
+                            type: "mrkdwn",
+                            text: `*Nouvel email !*`,
+                        },
                     },
                     {
-                        type: "mrkdwn",
-                        text: `Expéditeur: ${message.from?.text}`,
-                    },
-                ],
-            },
-            {
-                type: "context",
-                elements: [
-                    {
-                        type: "image",
-                        image_url: "https://avatars0.githubusercontent.com/u/9919?s=280&v=4",
-                        alt_text: "images",
+                        type: "section",
+                        text: {
+                            type: "mrkdwn",
+                            text: `*Sujet: ${message.subject}*`,
+                        },
                     },
                     {
-                        type: "mrkdwn",
-                        text: `Reçu le: ${rec_date}`,
+                        type: "section",
+                        text: {
+                            type: "mrkdwn",
+                            text: message.text,
+                        },
+                    },
+                    {
+                        type: "context",
+                        elements: [
+                            {
+                                type: "mrkdwn",
+                                text: `*Expéditeur:* ${message.from.text}`,
+                            },
+                        ],
+                    },
+                    {
+                        type: "context",
+                        elements: [
+                            {
+                                type: "mrkdwn",
+                                text: `*Date:* ${rec_date}`,
+                            },
+                        ],
                     },
                 ],
             },
