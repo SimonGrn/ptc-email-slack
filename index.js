@@ -23,10 +23,10 @@ const getEmails = () => {
                         });
                         msg.once('attributes', attrs => {
                             const {uid} = attrs;
-                            /*imap.addFlags(uid, ['\\Seen'], () => {
+                            imap.addFlags(uid, ['\\Seen'], () => {
                                 // Mark the email as read after reading it
                                 console.log(`Message marked as read!`);
-                            });*/
+                            });
                         });
                     });
                     f.once('error', ex => {
