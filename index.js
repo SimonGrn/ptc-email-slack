@@ -56,7 +56,7 @@ const getEmails = () => {
 
 const postMessage = async (message) => {
     let rec_date = new Date(message.date);
-    rec_date = rec_date.toLocaleString();
+    rec_date = rec_date.toLocaleString('fr-FR');
 
     const text = message.text.length > 80 ? message.text.substr(0, 80)+"..." : message.text;
     const payload = {
