@@ -3,6 +3,8 @@ const Imap = require('imap');
 const {simpleParser} = require('mailparser');
 const fetch = require("node-fetch");
 
+const textExcerptSize = 200;
+
 
 const getEmails = () => {
     try {
@@ -58,7 +60,7 @@ const postMessage = async (message) => {
     let rec_date = new Date(message.date);
     rec_date = rec_date.toLocaleString('fr-FR');
 
-    const text = message.text.length > 80 ? message.text.substr(0, 80)+"..." : message.text;
+    const text = message.text.length > textExcerptSize ? message.text.substr(0, textExcerptSize)+"..." : message.text;
     const payload = {
         channel: config.slack_channel,
         attachments: [
