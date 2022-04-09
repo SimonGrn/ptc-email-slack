@@ -5,5 +5,6 @@ module.exports = {
     port: 993,
     tls: true,
     slacktoken: "you-slack-token",
-    slackchannel: "your-slack-channel"
+    slackchannel: "your-slack-channel",
+    emailproviderurl: "URL to the webmail"
 }

@@ -86,7 +86,7 @@ const postMessage = async (message) => {
                         elements: [
                             {
                                 type: "mrkdwn",
-                                text: `${rec_date} - <https://webmail.gandi.net/SOGo/so/contact@paristestconf.com/Mail/view#!/Mail/0/INBOX|Voir l'email>`,
+                                text: `${rec_date} - <${config.emailproviderurl}|Voir l'email>`,
                             },
                         ],
                     },
