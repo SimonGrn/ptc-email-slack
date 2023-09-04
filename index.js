@@ -3,7 +3,7 @@ const Imap = require('imap');
 const {simpleParser} = require('mailparser');
 const fetch = require("node-fetch");
 
-const textExcerptSize = 200;
+const textExcerptSize = 600;
 
 
 const getEmails = () => {
