@@ -20,7 +20,11 @@ const getEmails = () => {
                         msg.on('body', stream => {
                             simpleParser(stream, async (err, parsed) => {
                                 console.log(`Retrieved message "${parsed.subject}"`);
-                                await postMessage(parsed);
+                                if (parsed.subject && parsed.subject.includes("[SPAM]")) {
+                                    console.log("Spam message detected, skipping...");
+                                } else {
+                                    await postMessage(parsed);
+                                }
                             });
                         });
                         msg.once('attributes', attrs => {
